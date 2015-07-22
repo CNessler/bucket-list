@@ -1,0 +1,14 @@
+extends ../layout
+block content
+  h1 New Bucket Item
+  if errors
+    each err in errors
+      p= err
+  form(action='/bucket/new' method='post')
+    label Title
+      input(type='text' name='title')
+    label Location
+      input(type='text' name='location')
+    label Description
+      input(type='textarea' name='description')
+    input(type='submit' value='Add To Bucket')  

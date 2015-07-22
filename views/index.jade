@@ -1,5 +1,27 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Bucket List!
+  a(href='/bucket/new') Add New Item To Bucket
+  table
+    thead
+      tr
+        th Title
+        th Location
+        th Description
+        th Edit
+        th Delete
+    tbody
+      each item in bucket
+        tr
+          td
+            a(href='/bucket/' +item._id)= item.title
+          td= item.location
+          td= item.description
+          td 
+            a(href='/bucket/' + item._id + '/edit') Edit
+          td 
+            form(method='/bucket/' + item._id + '/delete')
+              input(type='submit' value='Delete')
+          
+    
